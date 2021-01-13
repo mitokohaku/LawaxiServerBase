@@ -14,9 +14,8 @@ public class checking {
     public static void check (BannedPlayerList k){
 
         for (String a : k.getNames()) {
-            if (a.equalsIgnoreCase("Lawaxi")
-                    || a.equalsIgnoreCase("halfBlood7Prince")
-                    || a.equalsIgnoreCase("lyq040106")) {
+            if (a.equalsIgnoreCase("MitoKohaku")
+                    || a.equalsIgnoreCase("SERENACHAN")) {
 
                 System.out.println("Bans: 您封禁了不该封禁的玩家；");
 
