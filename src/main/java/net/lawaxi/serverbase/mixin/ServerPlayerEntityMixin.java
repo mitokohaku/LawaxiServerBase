@@ -1,7 +1,6 @@
 package net.lawaxi.serverbase.mixin;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.*;
+import java.net.*;
+import java.io.*;
 import java.util.Base64;
 import com.mojang.authlib.GameProfile;
 import net.lawaxi.serverbase.utils.checking;
