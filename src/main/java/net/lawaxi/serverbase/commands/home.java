@@ -65,8 +65,48 @@ public class home {
                                     return 1;
                                 } ))
                         .executes(ctx -> {
-                            //homes.getHome(ctx.getSource().getPlayer());
-                            return 1;
+                            ServerPlayerEntity player =ctx.getSource().getPlayer();
+                            String homename ="home";
+                            File homefile = new File(configs.homefolder,player.getEntityName() +File.separator+homename+".yml");
+                            if(homefile.exists())
+                            {
+                                try{
+                                    FileInputStream fos = new FileInputStream(homefile);
+
+                                    BufferedReader buffer = new BufferedReader(new InputStreamReader(fos, "UTF-8"));
+                                    String worldx = buffer.readLine();
+                                    if(worldx!=null){
+                                        String sx =buffer.readLine();
+                                        if(sx!=null)
+                                        {
+                                            String sy =buffer.readLine();
+                                            if(sy!=null)
+                                            {
+                                                String sz =buffer.readLine();
+                                                if(sz!=null)
+                                                {
+                                                    ServerWorld world = WorldDiscription.getWorld(worldx,player.getServer());
+                                                    double x = Double.valueOf(sx);
+                                                    double y = Double.valueOf(sy);
+                                                    double z = Double.valueOf(sz);
+
+                                                    //locationinfo.recordlocation(player);
+                                                    player.sendMessage(new LiteralText(messages.get(1,player.getGameProfile().getName())),false);
+                                                    player.sendMessage(new LiteralText(messages.get(2,player.getGameProfile().getName()).replace("%to%",homename)),true);
+                                                    player.teleport(world,x,y,z,0,0);
+
+                                                    return 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                catch (IOException e)
+                                { }
+
+                                }
+                                ctx.getSource().getPlayer().sendMessage(new LiteralText(messages.get(15,player.getGameProfile().getName()).replace("%to%",homename)),false);
+                                return 1;
                         })
         );
     }
