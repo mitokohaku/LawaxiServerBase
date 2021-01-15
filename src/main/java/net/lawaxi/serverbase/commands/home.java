@@ -21,9 +21,6 @@ public class home {
                                 .executes(ctx -> {
                                     ServerPlayerEntity player =ctx.getSource().getPlayer();
                                     String homename =StringArgumentType.getString(ctx,messages.get(14,"null"));
-                                    if (homename == null){
-                                        homename ="home";
-                                    }
                                     File homefile = new File(configs.homefolder,player.getEntityName() +File.separator+homename+".yml");
                                     if(homefile.exists())
                                     {
