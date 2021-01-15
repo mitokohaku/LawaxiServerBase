@@ -81,7 +81,7 @@ public abstract class ServerPlayerEntityMixin {
             }
         }
 
-        
+        /*
         //盗版服的正版皮肤恢复
         if(!getServer().isOnlineMode())
         {
@@ -98,12 +98,12 @@ public abstract class ServerPlayerEntityMixin {
                 getGameProfile().getProperties().asMap().put("textures",profile.getProperties().asMap().get("textures"));
 
             }
-        }
+        }*/
         
         checking.check(((ServerPlayerEntity)(Object)this).getServer().getPlayerManager().getUserBanList());
     }
 
-    
+    /*
     private static String getOnlineSkin(String name)
     {
         //1.获取玩家正版UUid
@@ -127,7 +127,7 @@ public abstract class ServerPlayerEntityMixin {
             return "";
         else
             return profile;
-    }
+    }*/
 
     private void save(){
         list.lastlocation.replace(((ServerPlayerEntity)(Object)this).getGameProfile(), createInfo(((ServerPlayerEntity)(Object)this).getServerWorld(),((ServerPlayerEntity)(Object)this).getBlockPos()));
