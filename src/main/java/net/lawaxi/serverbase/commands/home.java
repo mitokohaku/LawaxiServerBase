@@ -65,7 +65,7 @@ public class home {
                                     return 1;
                                 } ))
                         .executes(ctx -> {
-                            homes.getHome(ctx.getSource().getPlayer());
+                            //homes.getHome(ctx.getSource().getPlayer());
                             return 1;
                         })
         );
