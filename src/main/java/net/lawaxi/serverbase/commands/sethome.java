@@ -70,7 +70,49 @@ public class sethome {
                                     return 1;
                                 }))
                         .executes(ctx -> {
-                            ctx.getSource().getPlayer().sendMessage(new LiteralText(messages.get(22,ctx.getSource().getPlayer().getGameProfile().getName())),false);
+                                if(!configs.homefolder.exists())
+                                    configs.homefolder.mkdir();
+
+                                ServerPlayerEntity player =ctx.getSource().getPlayer();
+                                File homefolder = new File(configs.homefolder,player.getEntityName());
+                                if(!homefolder.exists())
+                                     homefolder.mkdir();
+
+                                String homename="home";
+                                File homefile = new File(configs.homefolder,player.getEntityName() +File.separator+homename+".yml");
+                                if(homefile.exists())
+                                {
+                                    player.sendMessage(new LiteralText(messages.get(19,player.getGameProfile().getName()).replace("%name%",homename)),false);
+                                }
+                                else
+                                {
+                                try{
+                                    String world = WorldDiscription.getDiscription(player.getServerWorld(),player.getServer());
+                                    if(world.equals("shit"))
+                                    {
+                                        ctx.getSource().getPlayer().sendMessage(new LiteralText(messages.get(20,player.getGameProfile().getName())),false);
+                                    }
+                                    else
+                                    {
+                                        BufferedWriter buffer = Files.newWriter(homefile, StandardCharsets.UTF_8);
+
+                                        buffer.write(world);
+                                        buffer.newLine();
+                                        buffer.write(String.valueOf(player.getX()));
+                                        buffer.newLine();
+                                        buffer.write(String.valueOf(player.getY()));
+                                        buffer.newLine();
+                                        buffer.write(String.valueOf(player.getZ()));
+
+                                        buffer.close();
+                                        ctx.getSource().getPlayer().sendMessage(new LiteralText(messages.get(21,player.getGameProfile().getName()).replace("%name%",homename)),false);
+                                        ctx.getSource().getPlayer().sendMessage(new LiteralText(messages.get(2,player.getGameProfile().getName()).replace("%to%",homename)),true);
+                                    }
+                                }
+                                catch (IOException e)
+                                {
+                                }
+                            }
                             return 1;
                         })
         );
