@@ -20,7 +20,7 @@ public class spawn {
 
                             player.sendMessage(new LiteralText(messages.get(1,player.getGameProfile().getName())),false);
                             player.sendMessage(new LiteralText(messages.get(23,player.getGameProfile().getName())),true);
-                            player.teleport(mainworld,mainworld.getLevelProperties().getSpawnX()-10,mainworld.getLevelProperties().getSpawnY()+5,mainworld.getLevelProperties().getSpawnZ()+9,0,0);
+                            player.teleport(mainworld,mainworld.getLevelProperties().getSpawnX()-10,mainworld.getLevelProperties().getSpawnY(),mainworld.getLevelProperties().getSpawnZ()+9,0,0);
 
                             return 1;
                         })
